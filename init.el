@@ -35,6 +35,7 @@
     init-pt
     init-csharp
     init-python
+    init-salt
     init-bindings)
   "Set of modules enabled in dotemacs."
   :group 'dotemacs)
