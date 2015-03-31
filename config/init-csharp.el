@@ -3,11 +3,7 @@
 
 ;; c# mode
 
-;; hack, c# mode causes problems if this isn't loaded
-(when (package-installed-p 'flymake)
-  (require 'flymake))
-
-(global-set-key [(control ?c) ?#] 'csharp-mode)
+(require-package 'flymake)
 
 (eval-after-load "compile"
   '(progn
@@ -135,12 +131,14 @@
   ;;            (string-match "scratch/.*\\.cs\\'" buffer-file-name))
   ;;   (set-scratch-file-compilation-command))
 
- (let ((project-file (my-find-project-file "\.csproj$")))
-    (if project-file
-      (progn (message "Found project file at %s" project-file)
-             (set (make-local-variable 'compile-command)
-                  (concat "msbuild /m /v:q /p:GenerateFullPaths=true \"" project-file "\" /p:StyleCop=false /p:BuildProjectReferences=true")))
-      (progn (message "Could not find project file")))))
+ ;;;; this is supposed to find the project file, but it is slow and it doesnt work for some reason
+ ;; (let ((project-file (my-find-project-file "\.csproj$")))
+ ;;    (if project-file
+ ;;      (progn (message "Found project file at %s" project-file)
+ ;;             (set (make-local-variable 'compile-command)
+ ;;                  (concat "msbuild /m /v:q /p:GenerateFullPaths=true \"" project-file "\" /p:StyleCop=false /p:BuildProjectReferences=true")))
+ ;;      (progn (message "Could not find project file"))))
+)
 
 (add-hook 'csharp-mode-hook 'on-csharp-loaded)
 

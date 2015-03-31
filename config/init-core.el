@@ -39,8 +39,8 @@
 (defvar eshell-aliases-file (concat user-emacs-directory ".eshell-aliases"))
 
 
-;; erc
-(defvar erc-log-channels-directory (concat user-emacs-directory ".cache/erc/logs"))
+;;; erc
+;(defvar erc-log-channels-directory (concat user-emacs-directory ".cache/erc-logs"))
 
 
 ;; vc
@@ -90,8 +90,7 @@
 
 
 (setq-default
- indent-tabs-mode nil
- show-trailing-whitespace t)
+ indent-tabs-mode nil)
 
 
 (provide 'init-core)

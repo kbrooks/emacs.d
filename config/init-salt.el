@@ -1,6 +1,6 @@
 ;;; make sls files read as yaml
 
-(require 'yaml-mode)
+(require-package 'yaml-mode)
 
 (define-derived-mode saltstack-mode yaml-mode "SaltStack"
   "Minimal Saltstack mode, based on `yaml-mode'."

@@ -63,6 +63,10 @@
 (dolist (module dotemacs-modules)
   (require module))
 
+;;; w32 hacks
+(if (eq system-type 'windows-nt)
+    (require 'init-windows-nt))
+
 
 ;;;; MISC CONFIG -- TODO: organize
 ; turn off alarm bell
