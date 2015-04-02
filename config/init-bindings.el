@@ -39,7 +39,7 @@
     "p" 'recentf-ido-find-file
     "s" (kbd "C-w s C-w j")
     "v" (kbd "C-w v C-w l")
-    "y" 'helm-show-key-ring
+    "y" 'helm-show-kill-ring
 ))
 
 (after 'evil
@@ -118,11 +118,11 @@
 
 ;; replace with [r]eally [q]uit
 (global-set-key (kbd "C-x r q") 'save-buffers-kill-terminal)
-(global-set-key (kbd "C-x C-c") (bind (message "Thou shall not quit!")))
+(global-set-key (kbd "C-x C-c") (bind (message "Quit with C-x r q")))
 (after 'evil
   (defadvice evil-quit (around advice-for-evil-quit activate)
-    (message "Thou shall not quit!"))
+    (message "Quit with C-x r q"))
   (defadvice evil-quit-all (around advice-for-evil-quit-all activate)
-    (message "Thou shall not quit!")))
+    (message "Quit with C-x r q")))
 
 (provide 'init-bindings)
