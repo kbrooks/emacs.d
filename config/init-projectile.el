@@ -9,4 +9,7 @@
 
 (projectile-global-mode t)
 
+;; cache in big projects
+(setq projectile-enable-caching t)
+
 (provide 'init-projectile)
