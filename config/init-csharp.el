@@ -5,6 +5,8 @@
 
 (require-package 'flymake)
 
+(require-package 'csharp-mode)
+
 (eval-after-load "compile"
   '(progn
      (setq compilation-error-regexp-alist nil)
@@ -31,6 +33,7 @@
     ;(add-to-list 'yas-snippet-dirs csharp-mode-snippets)
     ;(yas-reload-all)))
 
+; TODO: Make this not fuck up on strings with @. example: @"""\dog\""asdf  "
 (defun csharp-replace-double-quotes-with-string-empty (arg)
   (interactive "*P")
   (self-insert-command (prefix-numeric-value arg))
