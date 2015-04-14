@@ -15,7 +15,6 @@
 
 (setq inhibit-splash-screen t)
 
-(add-to-list 'load-path user-emacs-directory)
 (add-to-list 'load-path (concat user-emacs-directory "config"))
 (add-to-list 'load-path (concat user-emacs-directory "elisp"))
 
@@ -29,11 +28,13 @@
     init-org
     ;init-jira
     ;init-zeal
-    ;init-projectile ; projectile is too slow on windows.
+    init-projectile ; projectile is too slow on windows.
     init-ido
-    init-lisp
+    init-helm
     init-pt
+    init-lisp
     init-csharp
+    init-clojure
     init-python
     init-salt
     init-bindings)
@@ -47,7 +48,6 @@
     ;init-yasnippet
     ;init-auto-complete
     ;init-company
-    ;init-helm
     ;init-ag
     ;init-ctags ;; custom tags func defined, etc
     ;init-git
