@@ -28,7 +28,7 @@
 
 (global-evil-leader-mode)
 (evil-mode t)
-;(global-surround-mode 1)
+(global-evil-surround-mode 1)
 
 (defun my-send-string-to-terminal (string)
   (unless (display-graphic-p) (send-string-to-terminal string)))
