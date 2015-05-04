@@ -42,6 +42,12 @@
     "y" 'helm-show-kill-ring
 ))
 
+(after 'smartparens
+  (local-set-key (kbd "C-<left>") 'sp-forward-barf-sexp)
+  (local-set-key (kbd "C-<right>") 'sp-forward-slurp-sexp)
+  (local-set-key (kbd "M-<left>") 'sp-backward-slurp-sexp)
+  (local-set-key (kbd "M-<right>") 'sp-backward-barf-sexp))
+
 (after 'evil
   (require-package 'key-chord)
   (key-chord-mode 1)
@@ -125,4 +131,5 @@
   (defadvice evil-quit-all (around advice-for-evil-quit-all activate)
     (message "Quit with C-x r q")))
 
+  
 (provide 'init-bindings)
