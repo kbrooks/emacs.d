@@ -33,6 +33,15 @@
       recentf-max-menu-items 50)
 (recentf-mode +1)
 
+;; smartparens everywhere!
+(add-hook 'smartparens-enabled-hook 'evil-smartparens-mode)
+(require-package 'smartparens)
+(require-package 'evil-smartparens)
+
+
+
+
+
 
 ;; eshell
 (defvar eshell-directory-name (concat user-emacs-directory ".cache/eshell"))
