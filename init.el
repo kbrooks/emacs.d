@@ -28,7 +28,7 @@
     init-org
     ;init-jira
     ;init-zeal
-    init-projectile ; projectile is too slow on windows.
+    init-projectile
     init-ido
     init-helm
     init-pt
@@ -36,6 +36,7 @@
     init-csharp
     init-clojure
     init-python
+    init-javascript
     init-salt
     init-bindings)
   "Set of modules enabled in dotemacs."
@@ -77,3 +78,4 @@
 (require 'recentf)
 (recentf-mode 1)
 (setq recentf-max-menu-items 30)
+(put 'upcase-region 'disabled nil)
