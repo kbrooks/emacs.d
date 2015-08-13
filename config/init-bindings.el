@@ -32,6 +32,7 @@
     "b d" 'kill-this-buffer
     "e" 'eval-last-sexp
     "f" 'pt-regexp
+    "g" 'magit-status
     "h" help-map
     "h h" 'help-for-help-internal
     "l" 'linum-mode
@@ -61,10 +62,11 @@
 
   ;(define-key evil-normal-state-map (kbd "C-p") 'projectile-find-file)
 
-  ;(define-key evil-normal-state-map (kbd "C-h") 'evil-window-left)
-  ;(define-key evil-normal-state-map (kbd "C-j") 'evil-window-down)
-  ;(define-key evil-normal-state-map (kbd "C-k") 'evil-window-up)
-  ;(define-key evil-normal-state-map (kbd "C-l") 'evil-window-right)
+  (define-key evil-normal-state-map (kbd "C-w C-h") 'evil-window-left)
+  (define-key evil-normal-state-map (kbd "C-w C-j") 'evil-window-down)
+  (define-key evil-normal-state-map (kbd "C-w C-k") 'evil-window-up)
+  (define-key evil-normal-state-map (kbd "C-w C-l") 'evil-window-right)
+
 
   ;(define-key evil-motion-state-map "j" 'evil-next-visual-line)
   ;(define-key evil-motion-state-map "k" 'evil-previous-visual-line)

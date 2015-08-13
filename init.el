@@ -11,7 +11,7 @@
 
 (when (fboundp 'tool-bar-mode) (tool-bar-mode -1)) ; turns off tool bar
 (when (fboundp 'scroll-bar-mode) (scroll-bar-mode -1)) ; turns off scroll bar
-;(unless (display-graphic-p) (menu-bar-mode -1)) ; turns off menu bar
+(unless (display-graphic-p) (menu-bar-mode -1)) ; turns off menu bar
 
 (setq inhibit-splash-screen t)
 
@@ -32,12 +32,12 @@
     init-ido
     init-helm
     init-pt
+    init-git
     init-lisp
     init-csharp
     init-clojure
     init-python
-    init-javascript
-    init-salt
+    init-terraform
     init-bindings)
   "Set of modules enabled in dotemacs."
   :group 'dotemacs)
