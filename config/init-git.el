@@ -1,3 +1,3 @@
 (require-package 'magit)
 
-(provide 'init-bindings)
+(provide 'init-git)
