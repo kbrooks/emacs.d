@@ -33,6 +33,7 @@
     init-helm
     init-pt
     init-git
+    init-company
     init-lisp
     init-csharp
     init-clojure
