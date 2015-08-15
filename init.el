@@ -1,6 +1,5 @@
 ; Kyle's init.el
 
-
 (defgroup dotemacs nil
   "Custom configuration for dotemacs."
   :group 'local)
@@ -25,6 +24,7 @@
 (defcustom dotemacs-modules
   '(init-util
     init-evil
+    init-editor
     init-org
     ;init-jira
     ;init-zeal
@@ -45,7 +45,7 @@
 
     ;init-eyecandy
     ;init-colors
-    ;init-editor
+    ;
     ;init-smartparens
     ;init-yasnippet
     ;init-auto-complete
