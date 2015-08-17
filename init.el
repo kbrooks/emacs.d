@@ -28,6 +28,7 @@
     init-org
     ;init-jira
     ;init-zeal
+    init-pretty
     init-projectile
     init-ido
     init-helm
