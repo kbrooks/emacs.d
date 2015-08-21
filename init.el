@@ -40,6 +40,7 @@
     init-clojure
     init-python
     init-terraform
+    init-salt
     init-bindings)
   "Set of modules enabled in dotemacs."
   :group 'dotemacs)
@@ -50,7 +51,6 @@
     ;init-smartparens
     ;init-yasnippet
     ;init-auto-complete
-    ;init-company
     ;init-ag
     ;init-ctags ;; custom tags func defined, etc
     ;init-git
