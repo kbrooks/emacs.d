@@ -6,7 +6,7 @@
 
 (require-package 'guide-key)
 (require 'guide-key)
-(setq guide-key/guide-key-sequence '("C-x" "C-c" ","))
+(setq guide-key/guide-key-sequence '("C-x" "C-c" "<SPC>"))
 (setq guide-key/recursive-key-sequence-flag t)
 (guide-key-mode 1)
 
@@ -25,7 +25,8 @@
     "h" help-map
     "l" 'linum-mode
     "o" 'my-browse-file-directory
-    "p" 'helm-recentf
+    "p" projectile-command-map
+    "r" 'helm-recentf
     "s" 'helm-swoop
     "y" 'helm-show-kill-ring
 ))

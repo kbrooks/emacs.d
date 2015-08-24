@@ -3,6 +3,11 @@
 
 (require-package 'projectile)
 (require 'projectile)
+(require 'helm-projectile)
+
+(after 'helm
+  (setq projectile-completion-system 'helm)
+  (helm-projectile-on))
 
 (add-to-list 'projectile-globally-ignored-directories "elpa")
 (add-to-list 'projectile-globally-ignored-directories ".cache")
