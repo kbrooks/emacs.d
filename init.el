@@ -30,7 +30,7 @@
     ;init-zeal
     init-pretty
     init-projectile
-    init-ido
+    ;init-ido
     init-helm
     init-pt
     init-git
@@ -45,22 +45,11 @@
   "Set of modules enabled in dotemacs."
   :group 'dotemacs)
 
-    ;init-eyecandy
-    ;init-colors
-    ;
     ;init-smartparens
     ;init-yasnippet
     ;init-auto-complete
-    ;init-ag
-    ;init-ctags ;; custom tags func defined, etc
-    ;init-git
-    ;init-hg
     ;init-flycheck
-    ;init-vim
-    ;init-web
-    ;init-markdown
 
-    ;init-misc
     ;init-workgroups
 
 (dolist (module dotemacs-modules)

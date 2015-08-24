@@ -10,17 +10,6 @@
 (setq guide-key/recursive-key-sequence-flag t)
 (guide-key-mode 1)
 
-(require-package 'evil-org)
-
-(after 'smex
-  (global-set-key (kbd "M-x") 'smex)
-  (global-set-key (kbd "C-x C-m") 'smex)
-  (global-set-key (kbd "C-c C-m") 'smex))
-;(after 'helm
-  ;(global-set-key (kbd "M-x") 'helm-M-x)
-  ;(global-set-key (kbd "C-x C-m") 'helm-M-x)
-  ;(global-set-key (kbd "C-c C-m") 'helm-M-x))
-
 (after 'evil-leader
   (evil-leader/set-leader "<SPC>")
   (evil-leader/set-key
@@ -28,20 +17,29 @@
     "C" 'customize-group
     "E" 'eval-defun
     "P" 'package-list-packages
-    "b b" 'ido-switch-buffer
+    "b b" 'helm-mini
     "b d" 'kill-this-buffer
     "e" 'eval-last-sexp
     "f" 'pt-regexp
     "g" 'magit-status
     "h" help-map
-    "h h" 'help-for-help-internal
     "l" 'linum-mode
     "o" 'my-browse-file-directory
-    "p" 'recentf-ido-find-file
-    "s" (kbd "C-w s C-w j")
-    "v" (kbd "C-w v C-w l")
+    "p" 'helm-recentf
+    "s" 'helm-swoop
     "y" 'helm-show-kill-ring
 ))
+
+(after 'helm
+  (global-set-key (kbd "C-c h") 'helm-command-prefix)
+  (global-unset-key (kbd "C-x c"))
+
+  (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action) ; rebind tab to run persistent action
+  (define-key helm-map (kbd "C-i") 'helm-execute-persistent-action) ; make TAB works in terminal
+  (define-key helm-map (kbd "C-z")  'helm-select-action) ; list actions using C-z 
+  (global-set-key (kbd "M-x") 'helm-M-x)
+  (global-set-key (kbd "C-x C-m") 'helm-M-x)
+  (global-set-key (kbd "C-c C-m") 'helm-M-x))
 
 (after 'smartparens
   (local-set-key (kbd "C-<left>") 'sp-forward-barf-sexp)
