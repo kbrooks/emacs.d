@@ -42,7 +42,7 @@
     init-python
     init-terraform
     init-salt
-    init-workgroups
+;    init-workgroups
     init-bindings)
   "Set of modules enabled in dotemacs."
   :group 'dotemacs)

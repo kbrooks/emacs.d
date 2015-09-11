@@ -24,4 +24,7 @@
 (after 'company
   (add-to-list 'company-backends 'company-jedi))
 
+;;; i like ipython
+(require-package 'ipython)
+
 (provide 'init-python)
