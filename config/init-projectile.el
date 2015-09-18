@@ -2,8 +2,7 @@
 (defvar projectile-known-projects-file (concat user-emacs-directory ".cache/projectile-bookmarks.eld"))
 
 (require-package 'projectile)
-(require 'projectile)
-(require 'helm-projectile)
+(require-package 'helm-projectile)
 
 (after 'helm
   (setq projectile-completion-system 'helm)
