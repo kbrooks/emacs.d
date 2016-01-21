@@ -25,13 +25,13 @@
   '(init-util
     init-evil
     init-editor
-    init-org
+    ;init-org
     ;init-jira
     ;init-zeal
     init-yasnippet
     init-pretty
-    init-projectile
-    init-ido
+    ;init-projectile
+    ;init-ido
     init-helm
     init-pt
     init-git
@@ -60,6 +60,8 @@
 ;;; w32 hacks
 (if (eq system-type 'windows-nt)
     (require 'init-windows-nt))
+(if (eq system-type 'darwin)
+    (require 'init-mac))
 
 
 ;;;; MISC CONFIG -- TODO: organize

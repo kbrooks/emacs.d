@@ -11,7 +11,7 @@
 (add-to-list 'projectile-globally-ignored-directories "elpa")
 (add-to-list 'projectile-globally-ignored-directories ".cache")
 
-(projectile-global-mode t)
+(projectile-global-mode)
 
 ;; cache in big projects
 (setq projectile-enable-caching t)
