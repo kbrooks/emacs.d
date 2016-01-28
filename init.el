@@ -30,9 +30,9 @@
     ;init-zeal
     init-yasnippet
     init-pretty
-    ;init-projectile
     ;init-ido
     init-helm
+    init-projectile
     init-pt
     init-git
     init-company

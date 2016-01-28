@@ -44,8 +44,8 @@
   (global-set-key (kbd "C-c C-m") 'helm-M-x))
 
 (after 'smartparens
-  (local-set-key (kbd "C-<left>") 'sp-forward-barf-sexp)
-  (local-set-key (kbd "C-<right>") 'sp-forward-slurp-sexp)
+  (local-set-key (kbd "s-<left>") 'sp-forward-barf-sexp)
+  (local-set-key (kbd "s-<right>") 'sp-forward-slurp-sexp)
   (local-set-key (kbd "M-<left>") 'sp-backward-slurp-sexp)
   (local-set-key (kbd "M-<right>") 'sp-backward-barf-sexp))
 

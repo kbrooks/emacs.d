@@ -30,6 +30,9 @@
 (evil-mode t)
 (global-evil-surround-mode 1)
 
+;;; Fix forward-sexp and backwards-sexp at the cost of making some movements unintuitive (like $)
+(setq evil-move-cursor-back nil)
+
 (defun my-send-string-to-terminal (string)
   (unless (display-graphic-p) (send-string-to-terminal string)))
 
