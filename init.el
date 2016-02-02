@@ -39,6 +39,7 @@
     init-lisp
     init-csharp
     init-clojure
+    init-javascript
     init-python
     init-terraform
     init-salt
