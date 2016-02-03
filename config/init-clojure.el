@@ -5,9 +5,8 @@
 (require-package 'clojure-cheatsheet)
 
 
-;;; smartparens in clojure and cider: cool stuff
+;;; smartparens in clojure: cool stuff
 (add-hook 'clojure-mode-hook 'smartparens-strict-mode)
-(add-hook 'cider-mode-hook 'smartparens-strict-mode)
 
 (after 'smartparens
   (sp-pair "'" nil :actions :rem))
