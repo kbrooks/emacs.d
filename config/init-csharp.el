@@ -1,148 +1,17 @@
-;;; stolen from derek slager's csharp.el
-;;; https://github.com/derekslager/dotfiles/blob/master/emacs.d/derek/csharp.el
-
-;; c# mode
-
-(require-package 'flymake)
-
 (require-package 'csharp-mode)
+(require-package 'flycheck)
+(require-package 'omnisharp)
 
-(eval-after-load "compile"
-  '(progn
-     (setq compilation-error-regexp-alist nil)
+(add-hook 'csharp-mode-hook
+          (lambda ()
+            '(c-set-style "k&r")
+            'omnisharp-mode
+            'flycheck-mode))
 
-     (setq compilation-error-regexp-alist
-	   (append '(("\\(\\([_a-zA-Z]:\\)?[^:(\t\n]+\\)(\\([0-9]+\\)[,]\\([0-9]+\\)): \\(error\\|warning\\) CS[0-9]+:" 1 3 4))
-		   compilation-error-regexp-alist))
+(setq omnisharp-server-executable-path "/usr/local/bin/omnisharp")
 
-     ;; SourceAnalysis
-     (setq compilation-error-regexp-alist
-	   (append '(("\\([a-zA-Z0-9][0-9]*[^>\t \n]\\([_a-zA-Z]:\\)?[^:(\t\n]+\\)(\\([0-9]+\\)[,]\\([0-9]+\\)): \\(error\\|warning\\) : SA[0-9]+:" 1 3 4))
-		   compilation-error-regexp-alist))
-
-     ;; FxCop
-     (setq compilation-error-regexp-alist
-	   (append '(("[ ]*\\(\\([_a-zA-Z]:\\)?[^:(\t\n]+\\)(\\([0-9]+\\)[,]\\([0-9]+\\)) : \\(error\\|warning\\)  : CA[0-9]+ : " 1 3 4))
-		   compilation-error-regexp-alist))))
-
-; TODO snippets
-;(let ((csharp-mode-snippets "~/dev/csharp-mode-snippets"))
-  ;(when (file-exists-p csharp-mode-snippets)
-    ;(add-to-list 'load-path csharp-mode-snippets)
-    ;(require 'csharp-mode-snippets-support)
-    ;(add-to-list 'yas-snippet-dirs csharp-mode-snippets)
-    ;(yas-reload-all)))
-
-; TODO: Make this not fuck up on strings with @. example: @"""\dog\""asdf  "
-(defun csharp-replace-double-quotes-with-string-empty (arg)
-  (interactive "*P")
-  (self-insert-command (prefix-numeric-value arg))
-  (save-excursion
-    (when (re-search-backward "\\([^\\]\\)\"\"" (- (point) 10) t)
-      (replace-match "\\1String.Empty" t))))
-
-(defun csharp-lineup-method-declaration-after-attribute (elem)
-  (let ((anchor (cdr elem)))
-    (if (string-equal "[" (buffer-substring anchor (+ anchor 1)))
-        0
-      '+)))
-
-(defun match-length ()
-  (- (match-end 0) (match-beginning 0)))
-
-;; bind to topmost-intro-cont
-(defun csharp-lineup-anonymous-class-initialization-continuation (elem)
-  (let ((anchor (cdr elem))
-        (c))
-    ;; search backwards for 'new { ', stopping at anchor
-    (save-excursion
-      (back-to-indentation)
-      (setq c (current-column))
-      (if (re-search-backward "new ?{ ?" anchor t)
-          ;; found it, indent current line
-          (let ((difference (- (+ (current-column) (match-length)) c)))
-            (make-vector 1 (+ c difference)))
-        0))))
-
-; Java-like C# style with solid auto newline support.
-(defconst csharp-c-style
-  '((c-basic-offset . 4)
-    (c-comment-only-line-offset 0 . 0)
-    (c-hanging-braces-alist .
-     ((substatement-open . (after))
-      (statement-cont)
-      (inline-open . (after))
-      (inline-close)
-      (block-close . (after))
-      (namespace-open . (after))
-      (namespace-close . (after))
-      (brace-list-open)
-      (brace-list-close)
-      (brace-list-intro)
-      (class-open . (after))
-      (defun-open . (after))
-      (defun-close)))
-    (c-cleanup-list .
-     (brace-else-brace
-      brace-elseif-brace
-      brace-catch-brace
-      defun-close-semi
-      list-close-comma))
-    (c-offsets-alist .
-     ((inline-open . 0)
-      (topmost-intro-cont . csharp-lineup-anonymous-class-initialization-continuation)
-      (case-label . 0)
-      (statement-case-intro . +)
-      (statement-case-open . 0)
-      (statement-cont . csharp-lineup-method-declaration-after-attribute)
-      (arglist-intro . +)
-      (arglist-cont-nonempty . c-lineup-arglist-intro-after-paren)
-      (arglist-close . c-lineup-arglist)
-      (inher-cont . c-lineup-java-inher)))))
-
-(c-add-style "csharp" csharp-c-style)
-
-(defun on-csharp-loaded ()
-
-  (c-set-style "csharp")
-
-  (use-local-map csharp-mode-map)
-  (define-key csharp-mode-map "\"" 'csharp-replace-double-quotes-with-string-empty)
-
-  ;; electric keys suck
-  (define-key csharp-mode-map "{" 'self-insert-command)
-
-  (subword-mode)
-  (c-toggle-auto-newline -1)
-
-  ; Give extra fill space to compensate for namespace nesting.
-  (setq fill-column (+ c-basic-offset fill-column))
-  (setq tab-width c-basic-offset) ; maintain sanity when encountering tab-ridden code
-
-  ; Use xml documentation tags as paragraph separators so filling
-  ; works nicely in elements for which multi-line comments are preferred.
-  ; How great is Emacs?
-  (let ((xmldoc-para-rx "\\|[ ]*/// </?\\(summary\\|remarks\\|para\\)>$"))
-    (setq paragraph-start (concat paragraph-start xmldoc-para-rx))
-    (setq paragraph-separate (concat paragraph-separate xmldoc-para-rx)))
-
-  ; Uncomment to spell check comments.
-  ; (require 'flyspell)
-  ; (flyspell-prog-mode)
-
-  ;; (when (and buffer-file-name
-  ;;            (string-match "scratch/.*\\.cs\\'" buffer-file-name))
-  ;;   (set-scratch-file-compilation-command))
-
- ;;;; this is supposed to find the project file, but it is slow and it doesnt work for some reason
- ;; (let ((project-file (my-find-project-file "\.csproj$")))
- ;;    (if project-file
- ;;      (progn (message "Found project file at %s" project-file)
- ;;             (set (make-local-variable 'compile-command)
- ;;                  (concat "msbuild /m /v:q /p:GenerateFullPaths=true \"" project-file "\" /p:StyleCop=false /p:BuildProjectReferences=true")))
- ;;      (progn (message "Could not find project file"))))
-)
-
-(add-hook 'csharp-mode-hook 'on-csharp-loaded)
+(after 'company 
+  (add-to-list 'company-backends 'company-omnisharp)
+  (omnisharp-company-ignore-case nil))
 
 (provide 'init-csharp)
