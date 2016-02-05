@@ -2,7 +2,6 @@
       ;inhibit-startup-echo-area-message t
       ;inhibit-startup-message t)
 
-
 (setq custom-file (concat user-emacs-directory "custom.el"))
 (when (file-exists-p custom-file)
   (load custom-file))
@@ -39,26 +38,15 @@
 (require-package 'evil-smartparens)
 
 
-
-
-
-
 ;; eshell
 (defvar eshell-directory-name (concat user-emacs-directory ".cache/eshell"))
 (defvar eshell-aliases-file (concat user-emacs-directory ".eshell-aliases"))
 
-
-;;; erc
-;(defvar erc-log-channels-directory (concat user-emacs-directory ".cache/erc-logs"))
-
-
 ;; vc
 (setq vc-make-backup-files t)
 
-
 ;; ediff
 (setq ediff-split-window-function 'split-window-horizontally)
-
 
 ;; store most files in the cache
 (setq backup-directory-alist

@@ -21,7 +21,7 @@
 (setq jedi:complete-on-dot t)
 
 ;;; company needs some help to work with jedi
-(after 'company
+(with-eval-after-load 'company
   (add-to-list 'company-backends 'company-jedi))
 
 ;;; i like ipython

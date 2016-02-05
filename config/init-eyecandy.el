@@ -13,18 +13,18 @@
 
 
 (require-package 'diminish)
-(after 'diminish-autoloads
+(with-eval-after-load 'diminish-autoloads
   (diminish 'global-visual-line-mode)
-  (after 'undo-tree (diminish 'undo-tree-mode))
-  (after 'auto-complete (diminish 'auto-complete-mode))
-  (after 'projectile (diminish 'projectile-mode))
-  (after 'yasnippet (diminish 'yas-minor-mode))
-  (after 'guide-key (diminish 'guide-key-mode))
-  (after 'eldoc (diminish 'eldoc-mode))
-  (after 'smartparens (diminish 'smartparens-mode))
-  (after 'company (diminish 'company-mode))
-  ;(after 'git-gutter+ (diminish 'git-gutter+-mode))
-  (after 'pretty-mode (diminish 'smooth-scroll-mode)))
+  (with-eval-after-load 'undo-tree (diminish 'undo-tree-mode))
+  (with-eval-after-load 'auto-complete (diminish 'auto-complete-mode))
+  (with-eval-after-load 'projectile (diminish 'projectile-mode))
+  (with-eval-after-load 'yasnippet (diminish 'yas-minor-mode))
+  (with-eval-after-load 'guide-key (diminish 'guide-key-mode))
+  (with-eval-after-load 'eldoc (diminish 'eldoc-mode))
+  (with-eval-after-load 'smartparens (diminish 'smartparens-mode))
+  (with-eval-after-load 'company (diminish 'company-mode))
+  ;(with-eval-after-load 'git-gutter+ (diminish 'git-gutter+-mode))
+  (with-eval-after-load 'pretty-mode (diminish 'smooth-scroll-mode)))
 
 
 ;(global-hl-line-mode +1)

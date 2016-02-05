@@ -8,7 +8,7 @@
 ;;; smartparens in clojure: cool stuff
 (add-hook 'clojure-mode-hook 'smartparens-strict-mode)
 
-(after 'smartparens
+(with-eval-after-load 'smartparens
   (sp-pair "'" nil :actions :rem))
 
 

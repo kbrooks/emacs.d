@@ -4,7 +4,7 @@
 (require-package 'projectile)
 (require-package 'helm-projectile)
 
-(after 'helm
+(with-eval-after-load 'helm
   (setq projectile-completion-system 'helm)
   (helm-projectile-on))
 

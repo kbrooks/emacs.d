@@ -10,7 +10,7 @@
 (setq guide-key/recursive-key-sequence-flag t)
 (guide-key-mode 1)
 
-(after 'evil-leader
+(with-eval-after-load 'evil-leader
   (evil-leader/set-leader "<SPC>")
   (evil-leader/set-key
     "SPC" 'helm-M-x
@@ -26,13 +26,16 @@
     "H" 'helm-command-prefix
     "l" 'linum-mode
     "o" 'my-browse-file-directory
-    "p" projectile-command-map
     "r" 'helm-recentf
     "s" 'helm-swoop
     "y" 'helm-show-kill-ring
-))
+    )
+  (with-eval-after-load 'projectile
+    (evil-leader/set-key
+      "p" projectile-command-map)
+    ))
 
-(after 'helm
+(with-eval-after-load 'helm
   (global-set-key (kbd "C-c h") 'helm-command-prefix)
   (global-unset-key (kbd "C-x c"))
   (global-set-key (kbd "C-x C-f") 'helm-find-files)
@@ -43,19 +46,25 @@
   (global-set-key (kbd "C-x C-m") 'helm-M-x)
   (global-set-key (kbd "C-c C-m") 'helm-M-x))
 
-(after 'smartparens
+(with-eval-after-load 'smartparens
   (local-set-key (kbd "s-<left>") 'sp-forward-barf-sexp)
   (local-set-key (kbd "s-<right>") 'sp-forward-slurp-sexp)
   (local-set-key (kbd "M-<left>") 'sp-backward-slurp-sexp)
-  (local-set-key (kbd "M-<right>") 'sp-backward-barf-sexp))
+  (local-set-key (kbd "M-<right>") 'sp-backward-barf-sexp)
+  ;; change sexp movements
+  (local-set-key (kbd "C-M-n") 'sp-next-sexp)
+  (local-set-key (kbd "C-M-p") 'sp-previous-sexp)
+  (local-set-key (kbd "C-M-u") 'sp-up-sexp)
+  (local-set-key (kbd "C-M-d") 'sp-down-sexp)
+  (local-set-key (kbd "C-M-a") 'sp-beginning-of-sexp))
 
-(after 'multiple-cursors
+(with-eval-after-load 'multiple-cursors
   (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
   (global-set-key (kbd "C->") 'mc/mark-next-like-this)
   (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
   (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this))
 
-(after 'evil
+(with-eval-after-load 'evil
   (require-package 'key-chord)
   (key-chord-mode 1)
 
@@ -102,23 +111,16 @@
 (define-key minibuffer-local-isearch-map [escape] 'my-minibuffer-keyboard-quit)
 
 
-;(after 'comint
+;(with-eval-after-load 'comint
   ;(define-key comint-mode-map [up] 'comint-previous-input)
   ;(define-key comint-mode-map [down] 'comint-next-input))
 
 
-;(after 'auto-complete
+;(with-eval-after-load 'auto-complete
   ;(define-key ac-completing-map "\t" 'ac-expand)
   ;(define-key ac-completing-map [tab] 'ac-expand)
   ;(define-key ac-completing-map (kbd "C-n") 'ac-next)
   ;(define-key ac-completing-map (kbd "C-p") 'ac-previous))
-
-
-;(after 'company
-  ;(define-key company-active-map "\t" 'my-company-tab)
-  ;(define-key company-active-map [tab] 'my-company-tab)
-  ;(define-key company-active-map (kbd "C-n") 'company-select-next)
-  ;(define-key company-active-map (kbd "C-p") 'company-select-previous))
 
 
 ;; mouse scrolling in terminal
@@ -134,7 +136,7 @@
 ;; replace with [r]eally [q]uit
 (global-set-key (kbd "C-x r q") 'save-buffers-kill-terminal)
 (global-set-key (kbd "C-x C-c") (bind (message "Quit with C-x r q")))
-(after 'evil
+(with-eval-after-load 'evil
   (defadvice evil-quit (around advice-for-evil-quit activate)
     (message "Quit with C-x r q"))
   (defadvice evil-quit-all (around advice-for-evil-quit-all activate)

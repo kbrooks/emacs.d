@@ -2,16 +2,17 @@
 (require-package 'flycheck)
 (require-package 'omnisharp)
 
-(add-hook 'csharp-mode-hook
-          (lambda ()
-            '(c-set-style "k&r")
-            'omnisharp-mode
-            'flycheck-mode))
+(defun my-csharp-hook ()
+  (progn
+    (c-set-style "k&r")
+    (omnisharp-mode)
+    (flycheck-mode)))
+
+(add-hook 'csharp-mode-hook 'my-csharp-hook)
 
 (setq omnisharp-server-executable-path "/usr/local/bin/omnisharp")
 
-(after 'company 
-  (add-to-list 'company-backends 'company-omnisharp)
-  (omnisharp-company-ignore-case nil))
+(with-eval-after-load 'company 
+  (add-to-list 'company-backends 'company-omnisharp))
 
 (provide 'init-csharp)

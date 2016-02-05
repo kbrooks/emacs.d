@@ -4,7 +4,7 @@
 (require-package 'flycheck)
 
 ;https://truongtx.me/2014/03/10/emacs-setup-jsx-mode-and-jsx-syntax-checking/
-(after 'flycheck
+(with-eval-after-load 'flycheck
   (flycheck-define-checker jsxhint-checker
     "A JSX syntax and style checker based on JSXHint."
     :command ("jsxhint" source)

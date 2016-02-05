@@ -1,9 +1,10 @@
+;;;; WINDOWS SPECIFIC CONFIGURATION OPTIONS
 
-;;; SYMANTEC!!! *shakes fist*
+;; SYMANTEC!!! *shakes fist*
 (setq w32-get-true-file-attributes nil)
 
-;;; projectile hack
-(after 'projectile
+;; projectile hack
+(with-eval-after-load 'projectile
   (setq projectile-indexing-method 'alien))
 
 (defun my-remove-dos-eol ()
@@ -12,7 +13,9 @@
   (setq buffer-display-table (make-display-table))
   (aset buffer-display-table ?\^M []))
 
-(add-hook 'cider-repl-mode-hook 'my-remove-dos-eol) ;Remove ^M from clojure repl in windows
+;; Remove ^M from clojure repl in windows
+(with-eval-after-load 'cider-mode
+  (add-hook 'cider-repl-mode-hook 'my-remove-dos-eol))
 
 (provide 'init-windows-nt)
 
