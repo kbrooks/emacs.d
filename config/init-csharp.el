@@ -4,7 +4,7 @@
 
 (defun my-csharp-hook ()
   (progn
-    (c-set-style "k&r")
+    (c-set-style "java")
     (omnisharp-mode)
     (flycheck-mode)))
 
