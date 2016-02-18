@@ -1,6 +1,7 @@
 (require-package 'csharp-mode)
 (require-package 'flycheck)
 (require-package 'omnisharp)
+(require-package 'yasnippet)
 
 (defun my-csharp-hook ()
   (progn
