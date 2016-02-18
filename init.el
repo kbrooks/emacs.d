@@ -8,11 +8,11 @@
   (eval-when-compile (require 'cl))
 
   ;;; time emacs startup
-;;  (lexical-let ((emacs-start-time (current-time)))
-;;    (add-hook 'emacs-startup-hook
-;;              (lambda ()
-;;                (let ((elapsed (float-time (time-subtract (current-time) emacs-start-time))))
-;;                  (message "[Emacs initialized in %.3fs]" elapsed)))))
+  (lexical-let ((emacs-start-time (current-time)))
+    (add-hook 'emacs-startup-hook
+              (lambda ()
+                (let ((elapsed (float-time (time-subtract (current-time) emacs-start-time))))
+                  (message "[Emacs initialized in %.3fs]" elapsed)))))
 
   (when (fboundp 'tool-bar-mode) (tool-bar-mode -1)) ;; turns off tool bar
   (when (fboundp 'scroll-bar-mode) (scroll-bar-mode -1)) ;; turns off scroll bar
