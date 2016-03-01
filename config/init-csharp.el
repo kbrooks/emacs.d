@@ -6,6 +6,7 @@
 (defun my-csharp-hook ()
   (progn
     (c-set-style "java")
+    (c-set-offset 'arglist-intro '+)
     (omnisharp-mode)
     (flycheck-mode)))
 
