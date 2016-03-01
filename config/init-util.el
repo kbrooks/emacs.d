@@ -7,6 +7,11 @@
         (delete-window))
     (kill-buffer-and-window)))
 
+(defun my-dos2unix ()
+  "sets buffer coding system to unix."
+  (interactive)
+  (set-buffer-file-coding-system 'utf-8-unix))
+
 (defun require-package (package)
   "Install given PACKAGE."
   (unless (package-installed-p package)
