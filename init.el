@@ -43,11 +43,6 @@
 
   (require 'init-util (concat config-directory "init-util.el"))
   
-;;  (if (eq system-type 'windows-nt)
-;;      (require 'init-windows-nt))
-;;  (if (eq system-type 'darwin)
-;;      (require 'init-mac))
-
   ;;; loop over all files in ./config/
   (cl-loop for file in (directory-files config-directory t)
            when (string-match "\\.el$" file)
