@@ -1,4 +1,4 @@
-(defmacro bind (&rest commands)
+(Defmacro bind (&rest commands)
   "Convience macro which creates a lambda interactive command."
   `(lambda ()
      (interactive)
@@ -23,7 +23,6 @@
     "f" 'pt-regexp
     "g" 'magit-status
     "h" help-map
-    "H" 'helm-command-prefix
     "l" 'linum-mode
     "o" 'my-browse-file-directory
     "r" 'helm-recentf
@@ -64,12 +63,17 @@
   (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
   (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this))
 
+(with-eval-after-load 'company
+  (define-key company-active-map (kbd "M-n") nil)
+  (define-key company-active-map (kbd "M-p") nil)
+  (define-key company-active-map (kbd "C-n") #'company-select-next)
+  (define-key company-active-map (kbd "C-p") #'company-select-previous))
+
 (with-eval-after-load 'evil
   (require-package 'key-chord)
   (key-chord-mode 1)
 
-
-  ;(define-key evil-normal-state-map (kbd "C-p") 'projectile-find-file)
+  ;;(define-key evil-normal-state-map (kbd "C-p") 'projectile-find-file)
 
   (define-key evil-normal-state-map (kbd "C-w C-h") 'evil-window-left)
   (define-key evil-normal-state-map (kbd "C-w C-j") 'evil-window-down)

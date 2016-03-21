@@ -1,9 +1,12 @@
 (require-package 'company)
 
+;; need to double bag this shit
 (with-eval-after-load 'evil
-  (custom-set-variables
-   '(evil-complete-next-func 'company-select-next)
-   '(evil-complete-previous-func 'company-select-previous)))
+  (with-eval-after-load 'company
+    (custom-set-variables
+     ;; we need to ignore the passed 'arg'
+     '(evil-complete-next-func (lambda (arg) (company-complete)))
+     '(evil-complete-previous-func (lambda (arg) (company-complete))))))
 
 (add-hook 'after-init-hook 'global-company-mode)
 
@@ -12,5 +15,8 @@
 
 ;; if this isn't set, company will do toLowerCase on all completions.
 (setq company-dabbrev-downcase nil)
+
+(add-hook 'after-init-hook 'global-company-mode)
+
 
 (provide 'init-company)
