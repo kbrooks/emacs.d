@@ -1,4 +1,4 @@
-(Defmacro bind (&rest commands)
+(defmacro bind (&rest commands)
   "Convience macro which creates a lambda interactive command."
   `(lambda ()
      (interactive)

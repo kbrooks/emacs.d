@@ -1,0 +1,3 @@
+[submodule "submodules/yasnippet-csharp"]
+	path = submodules/yasnippet-csharp
+	url = https://github.com/nosami/yasnippet-csharp
