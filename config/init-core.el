@@ -57,10 +57,10 @@
       (concat user-emacs-directory ".cache/auto-save-list/.saves-"))
 
 
-;; better scrolling
-(setq scroll-margin 3
-      scroll-conservatively 9999
-      scroll-preserve-screen-position t)
+; ;; better scrolling
+; (setq scroll-margin 3
+;       scroll-conservatively 9999
+;       scroll-preserve-screen-position t)
 
 
 ;; better buffer names for duplicates
