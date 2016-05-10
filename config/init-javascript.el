@@ -1,20 +1,21 @@
 ;;;; react
-(require-package 'jsx-mode)
 (require-package 'web-mode)
 (require-package 'flycheck)
 
-;https://truongtx.me/2014/03/10/emacs-setup-jsx-mode-and-jsx-syntax-checking/
-(with-eval-after-load 'flycheck
-  (flycheck-define-checker jsxhint-checker
-    "A JSX syntax and style checker based on JSXHint."
-    :command ("jsxhint" source)
-    :error-patterns ((error line-start (1+ nonl) ": line " line ", col " column ", " (message) line-end))
-    :modes (jsx-mode web-mode)))
 
-(add-hook 'jsx-mode-hook
+(define-derived-mode react-mode web-mode "react")
+(add-to-list 'auto-mode-alist '("\\.jsx\\'" . react-mode))
+(add-to-list 'auto-mode-alist '("\\.js\\'" . react-mode))
+
+(with-eval-after-load 'flycheck
+  (flycheck-add-mode 'javascript-eslint 'react-mode))
+
+(add-hook 'react-mode-hook
           (lambda ()
-            (flycheck-select-checker 'jsxhint-checker)
-            (flycheck-mode)))
+            (web-mode-set-content-type "jsx")
+            (flycheck-mode)
+            (flycheck-select-checker 'javascript-eslint)
+            ))
 
 ;;; json
 (require-package 'json-mode)
