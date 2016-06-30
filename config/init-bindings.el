@@ -5,6 +5,7 @@
      ,@commands))
 
 (require-package 'guide-key)
+(require-package 'nlinum)
 (require 'guide-key)
 (setq guide-key/guide-key-sequence '("C-x" "C-c" "<SPC>"))
 (setq guide-key/recursive-key-sequence-flag t)
@@ -23,7 +24,7 @@
     "f" 'pt-regexp
     "g" 'magit-status
     "h" help-map
-    "l" 'linum-mode
+    "l" 'nlinum-mode
     "o" 'my-browse-file-directory
     "r" 'helm-recentf
     "s" 'helm-swoop
