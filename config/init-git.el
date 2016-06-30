@@ -5,7 +5,6 @@
 
 (global-git-gutter-mode +1)
 
-(with-eval-after-load 'magit-gitflow
-  (add-hook 'magit-mode-hook 'turn-on-magit-gitflow))
+(add-hook 'magit-mode-hook 'turn-on-magit-gitflow)
 
 (provide 'init-git)
