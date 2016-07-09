@@ -24,7 +24,18 @@
 (require 'evil-visualstar)
 (require 'evil-surround)
 
-(add-to-list 'evil-emacs-state-modes 'profiler-report-mode 'erc-mode)
+(setq evil-emacs-state-modes
+      (append evil-emacs-state-modes
+              '(profiler-report-mode
+                magit-mode)))
+
+(setq evil-motion-state-modes
+      (append evil-motion-state-modes
+              '(dired-mode
+                cider-docview-mode
+                cider-stacktrace-mode
+                cider-browse-ns-mode
+                pt-search-mode)))
 
 (global-evil-leader-mode)
 (evil-mode t)

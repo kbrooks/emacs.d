@@ -4,9 +4,8 @@
 (with-eval-after-load 'evil
   (with-eval-after-load 'company
     (custom-set-variables
-     ;; we need to ignore the passed 'arg'
-     '(evil-complete-next-func (lambda (arg) (company-complete)))
-     '(evil-complete-previous-func (lambda (arg) (company-complete))))))
+     '(evil-complete-next-func (lambda (_) (company-complete)))
+     '(evil-complete-previous-func (lambda (_) (company-complete))))))
 
 (add-hook 'after-init-hook 'global-company-mode)
 
