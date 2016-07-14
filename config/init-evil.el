@@ -35,7 +35,8 @@
                 cider-docview-mode
                 cider-stacktrace-mode
                 cider-browse-ns-mode
-                pt-search-mode)))
+                pt-search-mode
+                outline-mode)))
 
 (global-evil-leader-mode)
 (evil-mode t)
