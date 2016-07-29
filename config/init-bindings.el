@@ -85,7 +85,6 @@
   ;(define-key evil-motion-state-map "j" 'evil-next-visual-line)
   ;(define-key evil-motion-state-map "k" 'evil-previous-visual-line)
 
-  (define-key evil-normal-state-map (kbd "Q") 'my-window-killer)
   (define-key evil-normal-state-map (kbd "Y") (kbd "y$"))
 
   ; get universal-argument in evil mode
