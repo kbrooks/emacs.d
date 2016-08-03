@@ -9,7 +9,7 @@
 
 (defun my-git-link-imshealth-gitlab (hostname dirname filename branch commit start end)
   (format "https://%s/%s/blob/%s/%s#%s"
-	  (substring hostname 0 -5)
+	  hostname
           dirname
 	  (or branch commit)
 	  filename
@@ -17,8 +17,9 @@
 	      (format "L%s-%s" start end)
 	    (format "L%s" start))))
 
-(add-to-list 'git-link-remote-alist
-    '("gitlab.imshealth.com:2222" my-git-link-imshealth-gitlab))
+(with-eval-after-load 'git-link
+ (add-to-list 'git-link-remote-alist
+    '("gitlab.imshealth.com:2222" my-git-link-imshealth-gitlab)))
 
 (provide 'init-git)
 
