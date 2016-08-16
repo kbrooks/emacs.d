@@ -2,7 +2,7 @@
 
 ;; SYMANTEC!!! *shakes fist*
 (if (eq system-type 'windows-nt)
-    (progn 
+    (progn
       (setq w32-get-true-file-attributes nil)
 
       ;; projectile hack
@@ -17,7 +17,9 @@
 
       ;; Remove ^M from clojure repl in windows
       (with-eval-after-load 'cider-mode
-        (add-hook 'cider-repl-mode-hook 'my-remove-dos-eol))))
+        (add-hook 'cider-repl-mode-hook 'my-remove-dos-eol))
+
+      (unless (gnutls-available-p)
+        (warn "GNUTLS is not available on this system. Packages will not install correctly."))))
 
 (provide 'init-windows-nt)
-
