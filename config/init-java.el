@@ -1,0 +1,20 @@
+;;; java mode
+
+
+
+;;; eclim
+(require-package 'eclim)
+(require-package 'flycheck)
+(require-package 'company)
+(require-package 'company-emacs-eclim)
+
+(company-emacs-eclim-setup)
+
+(global-eclim-mode)
+(global-company-mode t)
+
+(setq eclim-eclipse-dirs '("~/eclipse/java-neon/"))
+(setq eclim-executable "~/eclipse/java-neon/eclim")
+(setq company-emacs-eclim-ignore-case t)
+
+(provide 'init-java)
