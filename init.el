@@ -34,10 +34,9 @@
     :group 'dotemacs)
   
   ;;; packages
-  (setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
-                           ("org" . "http://orgmode.org/elpa/")
-                           ("marmalade" . "https://marmalade-repo.org/packages/")
-                           ("melpa" . "http://melpa.org/packages/")))
+  (add-to-list 'package-archives '("marmalade" . "https://marmalade-repo.org/packages/"))
+  (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+  (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
 
   (setq package-enable-at-startup nil)
   (package-initialize)
