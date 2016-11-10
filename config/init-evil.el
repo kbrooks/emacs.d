@@ -38,6 +38,15 @@
                 pt-search-mode
                 outline-mode)))
 
+; get back RET and SPC in evil-motion-state (fixes dired)
+; https://www.emacswiki.org/emacs/Evil#toc12
+(defun my-move-key (keymap-from keymap-to key)
+  "Moves key binding from one keymap to another, deleting from the old location. "
+  (define-key keymap-to key (lookup-key keymap-from key))
+  (define-key keymap-from key nil))
+(my-move-key evil-motion-state-map evil-normal-state-map (kbd "RET"))
+(my-move-key evil-motion-state-map evil-normal-state-map " ")
+
 (global-evil-leader-mode)
 (evil-mode t)
 (global-evil-surround-mode 1)
