@@ -3,10 +3,10 @@
 
 
 ;;; eclim
-(require-package 'eclim)
-(require-package 'flycheck)
-(require-package 'company)
-(require-package 'company-emacs-eclim)
+(use-package eclim)
+(use-package flycheck)
+(use-package company)
+(use-package company-emacs-eclim)
 
 (company-emacs-eclim-setup)
 

@@ -15,8 +15,8 @@
 
 
 ;;; jedi autocompletion
-(require-package 'jedi)
-(require-package 'company-jedi)
+(use-package jedi)
+(use-package company-jedi)
 (add-hook 'python-mode-hook 'jedi:setup)
 (setq jedi:complete-on-dot t)
 
@@ -25,6 +25,6 @@
   (add-to-list 'company-backends 'company-jedi))
 
 ;;; i like ipython
-(require-package 'ipython)
+;(use-package ipython)
 
 (provide 'init-python)

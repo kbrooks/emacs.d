@@ -1,4 +1,4 @@
-(require-package 'yasnippet)
+(use-package yasnippet)
 
 (add-hook 'term-mode-hook (lambda()
         (setq yas-dont-activate t)))

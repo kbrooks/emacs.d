@@ -1,5 +1,5 @@
-(require-package 'helm)
-(require-package 'helm-swoop)
+(use-package helm)
+(use-package helm-swoop)
 
 (helm-mode 1)
 

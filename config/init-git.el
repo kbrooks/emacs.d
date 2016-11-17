@@ -1,7 +1,7 @@
-(require-package 'magit)
-(require-package 'git-gutter)
-(require-package 'git-link)
-(require-package 'magit-gitflow)
+(use-package magit)
+(use-package git-gutter)
+(use-package git-link)
+(use-package magit-gitflow)
 
 (global-git-gutter-mode +1)
 

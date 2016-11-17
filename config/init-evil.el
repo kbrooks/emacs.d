@@ -11,11 +11,11 @@
 (defvar evilnc-hotkey-comment-operator "gc")
 
 (add-to-list 'load-path (concat user-emacs-directory "elisp/evil"))
-(require-package 'evil-leader)
-(require-package 'evil-visualstar)
-(require-package 'evil-nerd-commenter)
-(require-package 'evil-indent-textobject)
-(require-package 'evil-surround)
+(use-package evil-leader)
+(use-package evil-visualstar)
+(use-package evil-nerd-commenter)
+(use-package evil-indent-textobject)
+(use-package evil-surround)
 
 (require 'evil)
 (require 'evil-leader)

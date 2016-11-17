@@ -1,4 +1,4 @@
-(require-package 'rainbow-delimiters)
+(use-package rainbow-delimiters)
 
 (defun my-lisp-hook ()
   (progn

@@ -1,7 +1,7 @@
 ;;; make sls files read as yaml
 
-(require-package 'yaml-mode)
-(require-package 'jinja2-mode)
+(use-package yaml-mode)
+(use-package jinja2-mode)
 
 (define-derived-mode saltstack-mode yaml-mode "SaltStack"
   "Minimal Saltstack mode, based on `yaml-mode'."

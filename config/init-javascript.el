@@ -1,6 +1,6 @@
 ;;;; react
-(require-package 'web-mode)
-(require-package 'flycheck)
+(use-package web-mode)
+(use-package flycheck)
 
 
 (define-derived-mode react-mode web-mode "react")
@@ -18,7 +18,7 @@
             ))
 
 ;;; json
-(require-package 'json-mode)
+(use-package json-mode)
 
 (add-hook 'json-mode-hook
           (lambda ()

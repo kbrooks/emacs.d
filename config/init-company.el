@@ -1,4 +1,4 @@
-(require-package 'company)
+(use-package company)
 
 ;; need to double bag this shit
 (with-eval-after-load 'evil
@@ -10,7 +10,7 @@
 (add-hook 'after-init-hook 'global-company-mode)
 
 (with-eval-after-load 'helm
-  (require-package 'helm-company))
+  (use-package helm-company))
 
 ;; if this isn't set, company will do toLowerCase on all completions.
 (setq company-dabbrev-downcase nil)

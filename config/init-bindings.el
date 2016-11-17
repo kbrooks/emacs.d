@@ -4,8 +4,8 @@
      (interactive)
      ,@commands))
 
-(require-package 'guide-key)
-(require-package 'nlinum)
+(use-package guide-key)
+(use-package nlinum)
 (require 'guide-key)
 (setq guide-key/guide-key-sequence '("C-x" "C-c" "<SPC>"))
 (setq guide-key/recursive-key-sequence-flag t)
@@ -71,7 +71,7 @@
   (define-key company-active-map (kbd "C-p") #'company-select-previous))
 
 (with-eval-after-load 'evil
-  (require-package 'key-chord)
+  (use-package key-chord)
   (key-chord-mode 1)
 
   ;;(define-key evil-normal-state-map (kbd "C-p") 'projectile-find-file)
@@ -100,7 +100,7 @@
   (evil-define-key 'normal emacs-lisp-mode-map (kbd "K") (kbd ", h f RET"))
 
   ;; proper jump lists ;; broken...
-  ;;(require-package 'jumpc)
+  ;;(use-package jumpc)
   ;(jumpc)
   ;(define-key evil-normal-state-map (kbd "C-o") 'jumpc-jump-backward)
   ;(define-key evil-normal-state-map (kbd "C-i") 'jumpc-jump-forward)

@@ -34,8 +34,8 @@
 
 ;; smartparens everywhere!
 (add-hook 'smartparens-enabled-hook 'evil-smartparens-mode)
-(require-package 'smartparens)
-(require-package 'evil-smartparens)
+(use-package smartparens)
+(use-package evil-smartparens)
 
 
 ;; eshell
@@ -88,6 +88,12 @@
 
 (setq-default
  indent-tabs-mode nil)
+
+;; pt
+(use-package pt)
+
+;; winner mode
+;(use-package winner-mode)
 
 
 (provide 'init-core)

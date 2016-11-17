@@ -1,14 +1,13 @@
-(require-package 'csharp-mode)
-(require-package 'flycheck)
-(require-package 'omnisharp)
-(require-package 'yasnippet)
-
 (defun my-csharp-hook ()
   (progn
     (c-set-style "java")
     (c-set-offset 'arglist-intro '+)
     (omnisharp-mode)
     (flycheck-mode)))
+(use-package flycheck)
+(use-package omnisharp)
+(use-package yasnippet)
+
 
 (add-hook 'csharp-mode-hook 'my-csharp-hook)
 

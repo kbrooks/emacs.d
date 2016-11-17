@@ -1,4 +1,4 @@
-(require-package 'undo-tree)
+(use-package undo-tree)
 (require 'undo-tree)
 (setq undo-tree-auto-save-history t)
 (setq-default undo-tree-history-directory-alist
@@ -6,7 +6,7 @@
 (global-undo-tree-mode)
 
 
-(require-package 'multiple-cursors)
+(use-package multiple-cursors)
 (require 'multiple-cursors)
 (with-eval-after-load 'evil
   (add-hook 'multiple-cursors-mode-enabled-hook 'evil-emacs-state)

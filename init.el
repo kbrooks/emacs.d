@@ -42,6 +42,12 @@
   (setq package-enable-at-startup nil)
   (package-initialize)
 
+  (unless (package-installed-p 'use-package)
+    (unless (assoc 'use-package package-archive-contents)
+      (package-refresh-contents))
+    (package-install 'use-package))
+
+
   (require 'init-util (concat config-directory "init-util.el"))
   
   ;;; loop over all files in ./config/

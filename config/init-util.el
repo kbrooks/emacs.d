@@ -1,14 +1,10 @@
+;;; holds personal
+
+
 (defun my-dos2unix ()
   "sets buffer coding system to unix."
   (interactive)
   (set-buffer-file-coding-system 'utf-8-unix))
-
-(defun require-package (package)
-  "Install given PACKAGE."
-  (unless (package-installed-p package)
-    (unless (assoc package package-archive-contents)
-      (package-refresh-contents))
-    (package-install package)))
 
 (defun my-minibuffer-keyboard-quit ()
   "Abort recursive edit.
@@ -41,7 +37,7 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 
 ;;; this is causing problems with path loading in non-cygwin emacs on windows
 ;; make sure $PATH is set correctly
-;(require-package 'exec-path-from-shell)
+;(use-package exec-path-from-shell)
 ;(ignore-errors ;; windows
 ;  (exec-path-from-shell-initialize))
 
@@ -63,7 +59,7 @@ by using nxml's indentation rules."
   (save-excursion
       (nxml-mode)
       (goto-char begin)
-      (while (search-forward-regexp "\>[ \\t]*\<" nil t) 
+      (while (search-forward-regexp "\>[ \\t]*\<" nil t)
         (backward-char) (insert "\n"))
       (indent-region begin end))
     (message "Ah, much better!"))
