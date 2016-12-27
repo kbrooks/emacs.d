@@ -54,36 +54,25 @@
 ;;; Fix forward-sexp and backwards-sexp at the cost of making some movements unintuitive (like $)
 (setq evil-move-cursor-back nil)
 
-(defun my-send-string-to-terminal (string)
-  (unless (display-graphic-p) (send-string-to-terminal string)))
+;(defun my-send-string-to-terminal (string)
+  ;(unless (display-graphic-p) (send-string-to-terminal string)))
 
-(defun my-evil-terminal-cursor-change ()
-  (when (string= (getenv "TERM_PROGRAM") "iTerm.app")
-    (add-hook 'evil-insert-state-entry-hook (lambda () (my-send-string-to-terminal "\e]50;CursorShape=1\x7")))
-    (add-hook 'evil-insert-state-exit-hook  (lambda () (my-send-string-to-terminal "\e]50;CursorShape=0\x7"))))
-  (when (and (getenv "TMUX") (string= (getenv "TERM_PROGRAM") "iTerm.app"))
-    (add-hook 'evil-insert-state-entry-hook (lambda () (my-send-string-to-terminal "\ePtmux;\e\e]50;CursorShape=1\x7\e\\")))
-    (add-hook 'evil-insert-state-exit-hook  (lambda () (my-send-string-to-terminal "\ePtmux;\e\e]50;CursorShape=0\x7\e\\")))))
+;(defun my-evil-terminal-cursor-change ()
+  ;(when (string= (getenv "TERM_PROGRAM") "iTerm.app")
+    ;(add-hook 'evil-insert-state-entry-hook (lambda () (my-send-string-to-terminal "\e]50;CursorShape=1\x7")))
+    ;(add-hook 'evil-insert-state-exit-hook  (lambda () (my-send-string-to-terminal "\e]50;CursorShape=0\x7"))))
+  ;(when (and (getenv "TMUX") (string= (getenv "TERM_PROGRAM") "iTerm.app"))
+    ;(add-hook 'evil-insert-state-entry-hook (lambda () (my-send-string-to-terminal "\ePtmux;\e\e]50;CursorShape=1\x7\e\\")))
+    ;(add-hook 'evil-insert-state-exit-hook  (lambda () (my-send-string-to-terminal "\ePtmux;\e\e]50;CursorShape=0\x7\e\\")))))
+;
+;(add-hook 'after-make-frame-functions (lambda (frame) (my-evil-terminal-cursor-change)))
+;(my-evil-terminal-cursor-change)
 
-(add-hook 'after-make-frame-functions (lambda (frame) (my-evil-terminal-cursor-change)))
-(my-evil-terminal-cursor-change)
-
-(defun my-evil-modeline-change (default-color)
-  "changes the modeline color when the evil mode changes"
-  (let ((color (cond ((evil-emacs-state-p)  '("#5f0000" . "#ffffff"))
-                     (t default-color))))
-    (set-face-background 'mode-line (car color))
-    (set-face-foreground 'mode-line (cdr color))))
-
-(lexical-let ((default-color (cons (face-background 'mode-line)
-                                   (face-foreground 'mode-line))))
-  (add-hook 'post-command-hook (lambda () (my-evil-modeline-change default-color))))
-
-(defadvice evil-ex-search-next (after advice-for-evil-ex-search-next activate)
-  (evil-scroll-line-to-center (line-number-at-pos)))
-
-(defadvice evil-ex-search-previous (after advice-for-evil-ex-search-previous activate)
-  (evil-scroll-line-to-center (line-number-at-pos)))
+;(defadvice evil-ex-search-next (after advice-for-evil-ex-search-next activate)
+  ;(evil-scroll-line-to-center (line-number-at-pos)))
+;
+;(defadvice evil-ex-search-previous (after advice-for-evil-ex-search-previous activate)
+  ;(evil-scroll-line-to-center (line-number-at-pos)))
 
 
 (provide 'init-evil)

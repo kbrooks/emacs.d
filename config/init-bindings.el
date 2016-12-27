@@ -19,15 +19,14 @@
     "E" 'eval-defun
     "P" 'package-list-packages
     "b b" 'helm-mini
-    "b d" 'kill-this-buffer
     "e" 'eval-last-sexp
     "f" 'pt-regexp
     "g" 'magit-status
-    "h" help-map
     "l" 'nlinum-mode
     "o" 'my-browse-file-directory
     "r" 'helm-recentf
     "s" 'helm-swoop
+    "w" 'delete-trailing-whitespace
     "y" 'helm-show-kill-ring
     )
   (with-eval-after-load 'projectile
@@ -128,9 +127,9 @@
 
 
 ;; mouse scrolling in terminal
-(unless (display-graphic-p)
-  (global-set-key [mouse-4] (lambda () (interactive) (scroll-down 1)))
-  (global-set-key [mouse-5] (lambda () (interactive) (scroll-up 1))))
+; (unless (display-graphic-p)
+;   (global-set-key [mouse-4] (lambda () (interactive) (scroll-down 1)))
+;   (global-set-key [mouse-5] (lambda () (interactive) (scroll-up 1))))
 
 
 ;; have no use for these default bindings
