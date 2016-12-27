@@ -1,11 +1,8 @@
 (require-package 'magit)
 (require-package 'git-gutter)
 (require-package 'git-link)
-(require-package 'magit-gitflow)
 
 (global-git-gutter-mode +1)
-
-(add-hook 'magit-mode-hook 'turn-on-magit-gitflow)
 
 ;;; generates link to code.amazon.com
 (defun my-git-link-amazon-gitlab (hostname dirname filename branch commit start end)
